@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorations Émotionnelles - Menu Principal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <link rel="stylesheet" href="css/menu.css">
+
+</head>
+<body>
+  <!-- Écran de chargement -->
+  <div class="loader-container">
+    <div class="loader-logo">
+      <div class="loader-diamond"></div>
+    </div>
+    <div class="loader-text">Préparation de l'expérience</div>
+  </div>
+
+  <!-- Formes d'arrière-plan -->
+  <div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+    <div class="shape shape-5"></div>
+  </div>
+  
+  <div class="main-container">
+    <header data-aos="fade-down" data-aos-duration="1200">
+      <div class="title-container">
+        <h1>Explorations Émotionnelles</h1>
+        <div class="title-accent"></div>
+      </div>
+      <p class="intro">Plongez dans l'univers complexe des émotions humaines à travers des expériences visuelles et poétiques. Chaque émotion est représentée dans une interprétation cubiste numérique qui révèle sa profondeur et ses multiples facettes.</p>
+      
+      <div class="developer-credit">Création par MouseQuetaire</div>
+    </header>
+    
+    <div class="emotions-grid">
+      <div class="emotion-card grief" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+        <div class="card-background"></div>
+        <div class="card-overlay"></div>
+        <div class="emotion-symbol"></div>
+        <div class="card-content">
+          <h2>Deuil & Tristesse</h2>
+          <p>Une interprétation cubiste du poème "Demain, dès l'aube..." de Victor Hugo</p>
+          <a href="index.html" class="emotion-btn">Explorer</a>
+        </div>
+      </div>
+      
+      <div class="emotion-card joy" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        <div class="card-background"></div>
+        <div class="card-overlay"></div>
+        <div class="emotion-symbol"></div>
+        <div class="card-content">
+          <h2>Joie</h2>
+          <p>Une immersion dans l'émotion la plus lumineuse de l'expérience humaine. À travers un ballet de formes dynamiques et de couleurs vibrantes".</p>
+          <a href="im-still-standing-reactive.html" class="emotion-btn">Explorer</a>
+        </div>
+      </div>
+      
+      <div class="emotion-card anger coming-soon" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+        <div class="card-background"></div>
+        <div class="card-overlay"></div>
+        <div class="emotion-symbol"></div>
+        <div class="card-content">
+          <h2>Colère</h2>
+          <p>Plongez dans un univers visuel de déconstruction géométrique illustrant les multiples facettes de la colère. Des formes acérées et des mouvements brusques traduisent l'intensité et le pouvoir transformateur de cette émotion fondamentale.</p>
+          <a href="colere.html" class="emotion-btn">Explorer</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">
+      © 2025 | <span>Explorations Émotionnelles</span> | Une expérience artistique et interactive
+    </div>
+  </div>
+
+  <script>
+    // Gestion de l'écran de chargement
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        const loaderContainer = document.querySelector('.loader-container');
+        const mainContainer = document.querySelector('.main-container');
+        
+        loaderContainer.style.opacity = '0';
+        loaderContainer.style.visibility = 'hidden';
+        mainContainer.style.opacity = '1';
+        
+        // Animation du titre
+        gsap.to(".title-accent", {
+          width: "180px",
+          duration: 1.5,
+          ease: "power3.out",
+          delay: 0.5
+        });
+        
+        // Animation des cartes d'émotion
+        const emotionCards = document.querySelectorAll('.emotion-card');
+        
+        emotionCards.forEach(card => {
+          card.addEventListener('mouseenter', function() {
+            gsap.to(this.querySelector('.emotion-symbol'), {
+              scale: 1.2,
+              duration: 0.5,
+              ease: "back.out(1.7)"
+            });
+          });
+          
+          card.addEventListener('mouseleave', function() {
+            gsap.to(this.querySelector('.emotion-symbol'), {
+              scale: 1,
+              duration: 0.5,
+              ease: "power2.out"
+            });
+          });
+        });
+        
+        // Animation continue du symbole de joie
+        gsap.to(".joy .emotion-symbol::before", {
+          boxShadow: "0 0 50px var(--gold)",
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+      }, 1200);
+    });
+  </script>
+</body>
+</html>

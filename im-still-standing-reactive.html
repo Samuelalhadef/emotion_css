@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>I'm Still Standing - Visualiseur (Corrigé)</title>
+
+</head>
+<link rel="stylesheet" href="css/joie.css">
+<body>
+  <div class="loader" id="loader">
+    <div class="spinner"></div>
+    <div class="loading-text">CHARGEMENT...</div>
+  </div>
+
+  <div class="error-message" id="errorMessage"></div>
+
+  <canvas id="canvas"></canvas>
+  
+  <!-- Interface utilisateur -->
+  <div class="title-container">
+    <h1 class="title">Joie - I'm Still Standing</h1>
+    <p class="subtitle">Expérience Visuelle Extraordinaire</p>
+  </div>
+  
+  
+  
+  <div class="chorus-indicator" id="chorusIndicator">
+    <span class="rainbow-text">REFRAIN</span>
+  </div>
+  
+  <div class="light-flash" id="lightFlash"></div>
+  <div class="wave-effect" id="waveEffect"></div>
+  
+  <div class="beat-counter" id="beatCounter">BEAT</div>
+  
+  <!-- Visualiseur latéral -->
+  <div class="side-visualizer left" id="leftVisualizer"></div>
+  <div class="side-visualizer right" id="rightVisualizer"></div>
+  
+  <!-- Conteneur pour les explosions de particules -->
+  <div class="explosion-container" id="explosionContainer"></div>
+  
+  <div class="controls">
+    <button class="control-btn" id="playBtn">Démarrer l'expérience</button>
+    <button class="control-btn" id="resetBtn">Réinitialiser</button>
+  </div>
+
+ 
+</body>
+<script src="js/joie.js"></script>
+</html>

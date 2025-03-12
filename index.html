@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demain, dès l'aube... - Vision cubiste interactive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Styles additionnels pour l'interaction */
+    #interaction-indicator {
+      transition: all 0.3s ease;
+    }
+    
+    #interaction-indicator.active {
+      background-color: rgba(76, 175, 80, 0.8) !important;
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    }
+    
+    #interaction-indicator:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Style du curseur pour les éléments déplaçables */
+    .grabbable {
+      cursor: grab;
+    }
+    
+    .grabbing {
+      cursor: grabbing !important;
+    }
+    
+    /* Instructions d'interaction */
+    .interaction-instructions {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 14px;
+      z-index: 1000;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .interaction-instructions.visible {
+      opacity: 1;
+      animation: fadeInOut 5s forwards;
+    }
+    
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    
+    /* Style pour les messages personnalisés */
+    .dedication {
+      font-size: 1.3rem;
+      color: #a0d6f7;
+      font-style: italic;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      opacity: 0.9;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .developer-credit {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <div class="loader"></div>
+  </div>
+
+  <div id="intro">
+    <h1>Demain, dès l'aube...</h1>
+    <p>Une interprétation cubiste <strong>interactive</strong> du poème de Victor Hugo, évoquant le voyage d'un père vers la tombe de sa fille. Déplacez les éléments pour créer votre propre composition.</p>
+    
+    <!-- Messages personnalisés dans l'introduction -->
+    <div class="dedication">Pour mon ami Olivier</div>
+    <div class="developer-credit">Developed by MouseQuetaire</div>
+    
+    <button id="start-button">COMMENCER LE VOYAGE</button>
+  </div>
+
+  <div id="canvas-container">
+    <canvas id="bg-canvas"></canvas>
+    <canvas id="main-canvas"></canvas>
+    <canvas id="particle-canvas"></canvas>
+    <canvas id="interactive-canvas"></canvas>
+  </div>
+
+  <div id="poem-container"></div>
+  
+  <div class="scene-title" id="scene-title"></div>
+  
+  <div class="controls" id="controls"></div>
+  
+  <div class="progress-container" id="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  
+  <div class="audio-controls" id="audio-controls">
+    <input type="range" min="0" max="100" value="70" class="volume-slider" id="volume-slider">
+    <button class="mute-button" id="mute-button">🔊</button>
+  </div>
+  
+  <div class="click-hint" id="click-hint">Cliquez et déplacez les formes pour interagir</div>
+  
+  <div class="interaction-instructions" id="interaction-instructions">
+    Appuyez sur la touche 'I' pour activer/désactiver le mode interactif
+  </div>
+  
+  <div id="magic-circle"></div>
+  
+  <!-- Élément audio avec preload pour assurer le chargement -->
+  <audio id="background-music" preload="auto" loop>
+    <source src="audio/vice_versa.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas l'élément audio.
+  </audio>
+  
+  <div class="author-credit">Poème "Demain, dès l'aube..." - Victor Hugo (1847)</div>
+
+  <!-- Chargement des scripts JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="js/scenes.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/interaction.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script>
+    // Afficher les instructions au démarrage
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        const instructions = document.getElementById('interaction-instructions');
+        if (instructions) {
+          instructions.classList.add('visible');
+          
+          // Cacher après animation
+          setTimeout(() => {
+            instructions.classList.remove('visible');
+          }, 5000);
+        }
+      }, 3000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,694 @@
+
+:root {
+  --gold: #FFD700;
+  --gold-light: #FFF1AA;
+  --gold-dark: #E5B80B;
+  --black: #000000;
+  --royal-blue: #4169E1;
+  --vibrant-purple: #9932CC;
+  --electric-blue: #00FFFF;
+  --neon-green: #39FF14;
+  --hot-pink: #FF69B4;
+  --neon-orange: #FF6600;
+  --joy-color: #FFD700;
+  --grief-color: #3f51b5;
+  --anger-color: #c62828;
+  --text-light: #FFFFFF;
+  --text-dim: #BBBBBB;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--black);
+  color: var(--text-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black);
+  z-index: 9999;
+  transition: opacity 1.5s ease, visibility 1.5s ease;
+}
+
+.loader-logo {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 40px;
+}
+
+.loader-diamond {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.4) 100%);
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+  animation: diamondPulse 2s infinite ease-in-out alternate;
+}
+
+.loader-diamond::before,
+.loader-diamond::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: 1px solid var(--gold);
+}
+
+.loader-diamond::before {
+  width: 80%;
+  height: 80%;
+  animation: diamondRotate 4s infinite linear;
+}
+
+.loader-diamond::after {
+  width: 120%;
+  height: 120%;
+  opacity: 0.5;
+  animation: diamondRotate 4s infinite linear reverse;
+}
+
+@keyframes diamondPulse {
+  0% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); }
+  100% { box-shadow: 0 0 50px rgba(255, 215, 0, 0.5); }
+}
+
+@keyframes diamondRotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.loader-text {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: var(--gold);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.loader-text::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: lineGrow 2.5s infinite;
+}
+
+@keyframes lineGrow {
+  0% { width: 0; }
+  50% { width: 100%; }
+  100% { width: 0; }
+}
+
+.main-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  position: relative;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.background-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.03;
+  transform-origin: center;
+}
+
+.shape-1 {
+  top: 15%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  border: 1px solid var(--gold);
+  transform: rotate(45deg);
+  animation: floatAndRotate 20s infinite alternate;
+}
+
+.shape-2 {
+  top: 60%;
+  right: 8%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-light);
+  animation: pulsate 15s infinite;
+}
+
+.shape-3 {
+  bottom: 10%;
+  left: 15%;
+  width: 250px;
+  height: 250px;
+  background-color: var(--gold);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  animation: floatAndRotate 18s infinite alternate-reverse;
+}
+
+.shape-4 {
+  top: 40%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: var(--gold-light);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  animation: floatAndRotate 25s infinite linear;
+}
+
+.shape-5 {
+  top: 20%;
+  right: 20%;
+  width: 180px;
+  height: 180px;
+  border: 1px solid var(--gold-dark);
+  transform: rotate(30deg);
+  animation: floatAndRotate 22s infinite alternate;
+}
+
+@keyframes floatAndRotate {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
+
+@keyframes pulsate {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.03;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.05;
+  }
+}
+
+header {
+  text-align: center;
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.title-container {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+  letter-spacing: 3px;
+  position: relative;
+  display: inline-block;
+}
+
+.title-accent {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  bottom: -10px;
+  width: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.intro {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+  font-weight: 300;
+}
+
+.dedication {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  font-style: italic;
+  margin-top: 25px;
+  letter-spacing: 1px;
+}
+
+.developer-credit {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.emotions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.emotion-card {
+  background-color: var(--slate);
+  height: 450px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+  z-index: 1;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  transform: scale(1);
+}
+
+.grief .card-background {
+  background: radial-gradient(circle at center, var(--grief-color) 0%, #1a237e 100%);
+  opacity: 0.7;
+}
+
+.joy .card-background {
+  background: radial-gradient(circle at center, var(--joy-color) 0%, #FFB400 100%);
+  opacity: 0.7;
+}
+
+.anger .card-background {
+  background: radial-gradient(circle at center, var(--anger-color) 0%, #b71c1c 100%);
+  opacity: 0.7;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+  transform: translateY(0);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.emotion-symbol {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+  opacity: 0.9;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Symbole de joie - Soleil rayonnant */
+.joy .emotion-symbol {
+  background: none;
+}
+
+.joy .emotion-symbol::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background-color: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 30px var(--gold);
+}
+
+.joy .emotion-symbol::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    var(--gold) 0deg, transparent 12deg,
+    var(--gold) 24deg, transparent 36deg,
+    var(--gold) 48deg, transparent 60deg,
+    var(--gold) 72deg, transparent 84deg,
+    var(--gold) 96deg, transparent 108deg,
+    var(--gold) 120deg, transparent 132deg,
+    var(--gold) 144deg, transparent 156deg,
+    var(--gold) 168deg, transparent 180deg,
+    var(--gold) 192deg, transparent 204deg,
+    var(--gold) 216deg, transparent 228deg,
+    var(--gold) 240deg, transparent 252deg,
+    var(--gold) 264deg, transparent 276deg,
+    var(--gold) 288deg, transparent 300deg,
+    var(--gold) 312deg, transparent 324deg,
+    var(--gold) 336deg, transparent 348deg
+  );
+  border-radius: 50%;
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Symbole de deuil - Goutte d'eau */
+.grief .emotion-symbol {
+  background: none;
+}
+
+.grief .emotion-symbol::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 50px;
+  height: 70px;
+  border-radius: 50% 50% 0 50%;
+  background: linear-gradient(135deg, var(--grief-color), #536dfe);
+  box-shadow: 0 0 20px rgba(63, 81, 181, 0.7);
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) rotate(45deg) scale(1); }
+  100% { transform: translate(-50%, -50%) rotate(45deg) scale(1.1); }
+}
+
+/* Symbole de colère - Éclair */
+.anger .emotion-symbol {
+  background: none;
+}
+
+.anger .emotion-symbol::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 80px;
+  background-color: var(--anger-color);
+  clip-path: polygon(50% 0%, 0% 50%, 40% 50%, 0% 100%, 100% 40%, 60% 40%, 100% 0%);
+  box-shadow: 0 0 20px rgba(198, 40, 40, 0.7);
+  animation: flash 3s infinite;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.5; }
+}
+
+.emotion-card h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin-bottom: 15px;
+  color: var(--text-light);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+}
+
+.emotion-card h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background-color: var(--gold);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.grief h2::after {
+  background-color: var(--grief-color);
+}
+
+.joy h2::after {
+  background-color: var(--joy-color);
+}
+
+.anger h2::after {
+  background-color: var(--anger-color);
+}
+
+.emotion-card p {
+  color: var(--text-dim);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.emotion-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--gold);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 1;
+}
+
+.grief .emotion-btn {
+  border-color: var(--grief-color);
+}
+
+.joy .emotion-btn {
+  border-color: var(--joy-color);
+}
+
+.anger .emotion-btn {
+  border-color: var(--anger-color);
+}
+
+.emotion-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--gold);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: -1;
+}
+
+.grief .emotion-btn::before {
+  background-color: var(--grief-color);
+}
+
+.joy .emotion-btn::before {
+  background-color: var(--joy-color);
+}
+
+.anger .emotion-btn::before {
+  background-color: var(--anger-color);
+}
+
+.emotion-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+}
+
+.emotion-card:hover .card-background {
+  transform: scale(1.1);
+}
+
+.emotion-card:hover .card-overlay {
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.5) 100%);
+}
+
+.emotion-card:hover .card-content {
+  transform: translateY(-30px);
+}
+
+.emotion-card:hover .emotion-symbol {
+  transform: translateX(-50%) scale(1.2);
+}
+
+.emotion-card:hover h2::after {
+  width: 80px;
+}
+
+.emotion-card:hover p {
+  max-height: 150px;
+  opacity: 1;
+  margin-top: 20px;
+}
+
+.emotion-card:hover .emotion-btn::before {
+  left: 0;
+}
+
+.emotion-card:hover .emotion-btn {
+  color: var(--black);
+}
+
+.coming-soon {
+  position: relative;
+}
+
+.coming-soon::before {
+  content: "Bientôt";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--gold);
+  font-size: 0.75rem;
+  padding: 5px 15px;
+  border: 1px solid var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 3;
+}
+
+.joy .coming-soon::before {
+  display: none; /* Supprimé pour la joie car l'expérience est disponible */
+}
+
+.grief .coming-soon::before {
+  display: none; /* Déjà disponible */
+}
+
+.footer {
+  margin-top: 100px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  letter-spacing: 1px;
+}
+
+.footer span {
+  color: var(--gold);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .emotions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .emotions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 3rem;
+  }
+  
+  .main-container {
+    padding: 60px 20px;
+  }
+  
+  .emotion-card {
+    height: 400px;
+  }
+  
+  .card-content {
+    padding: 30px;
+  }
+  
+  .emotion-symbol {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .intro {
+    font-size: 1rem;
+  }
+  
+  .emotion-card h2 {
+    font-size: 1.8rem;
+  }
+  
+  .emotion-symbol {
+    width: 60px;
+    height: 60px;
+  }
+}

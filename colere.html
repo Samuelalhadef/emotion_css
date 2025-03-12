@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorations Émotionnelles - Tempête Émotionnelle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/colere.css">
+  
+
+</head>
+<body>
+  <!-- Écran de chargement -->
+  <div class="loader">
+    <div class="loader-content">
+      <div class="pulse-container">
+        <div class="pulse"></div>
+        <div class="pulse"></div>
+        <div class="pulse"></div>
+        <div class="symbol"></div>
+      </div>
+      <div class="loader-text">Déchaînement de la colère</div>
+    </div>
+  </div>
+
+  <div class="game-container">
+    <div class="background">
+      <div class="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>
+      <div class="particles"></div>
+    </div>
+    
+    <div class="header">
+      <h1 class="title">Explorations Émotionnelles: Tempête Émotionnelle</h1>
+      <button class="menu-btn" id="menu-btn">Menu Principal</button>
+    </div>
+    
+    <div class="intro-screen" id="intro-screen">
+      <h2 class="intro-title">TEMPÊTE ÉMOTIONNELLE</h2>
+      <p class="intro-desc">La colère est une énergie brute et puissante. Dans cette expérience, vous explorerez sa nature cyclique et explosive. Touchez la sphère de colère pour libérer son énergie et éviter qu'elle ne surchauffe. Mais attention : chaque interaction modifie son intensité de façon imprévisible.</p>
+      <button class="start-btn" id="start-btn">LIBÉRER LA COLÈRE</button>
+    </div>
+    
+    <div class="emotion-container">
+      <div class="anger-orb" id="anger-orb">
+        <div class="anger-glow"></div>
+        <div class="anger-symbols"></div>
+        <div class="energy-burst" id="energy-burst"></div>
+      </div>
+      <svg class="progress-ring" id="progress-ring">
+        <circle class="ring-background" cx="110" cy="110" r="100"></circle>
+        <circle class="ring-progress" id="ring-progress" cx="110" cy="110" r="100"></circle>
+      </svg>
+    </div>
+    
+    <div class="game-ui" id="game-ui">
+      <div class="time-container">
+        <div class="time-label">PRESSION</div>
+        <div class="time" id="time-display">60</div>
+      </div>
+      
+      <div class="score-container">
+        <div class="score-label">MAÎTRISE</div>
+        <div class="score" id="score-display">0</div>
+      </div>
+    </div>
+    
+    <div class="quote-container" id="quote-container">
+      <p class="quote-text">La colère est un acide qui peut faire plus de mal au récipient dans lequel elle est stockée qu'à tout ce sur quoi elle est déversée.</p>
+      <p class="quote-author">— Mark Twain</p>
+    </div>
+    
+    <div class="level-popup" id="level-popup"></div>
+    
+    <div class="scroll-description" id="scroll-description">
+      DÉCOUVRIR LA COLÈRE
+      <span class="scroll-arrow">↓</span>
+    </div>
+    
+    <div class="description-panel" id="description-panel">
+      <div class="description-content">
+        <h3 class="description-title">L'ANATOMIE DE LA COLÈRE</h3>
+        <p class="description-text">La colère est l'une des émotions les plus puissantes et complexes de l'expérience humaine. Elle surgit comme une vague brûlante qui monte en nous, souvent déclenchée par une injustice perçue, une frustration ou une menace.</p>
+        <p class="description-text">Cette émotion primaire est caractérisée par une montée d'énergie intense qui, si elle n'est pas canalisée, peut exploser de manière destructrice. Mais la colère peut aussi être une force motrice puissante qui nous pousse à agir, à protéger ce qui compte pour nous, et à transformer ce qui doit l'être.</p>
+        <p class="description-quote">La colère est une énergie qui, correctement dirigée, peut déplacer des montagnes.</p>
+        <p class="description-text">Plutôt que de la réprimer ou de la laisser nous contrôler, l'art consiste à reconnaître sa présence, à comprendre son message, et à la transformer en action constructive. C'est dans cette alchimie émotionnelle que réside notre pouvoir — non pas d'étouffer cette flamme, mais de l'utiliser pour illuminer notre chemin.</p>
+        <button class="close-btn" id="close-description">RETOURNER À L'EXPÉRIENCE</button>
+      </div>
+    </div>
+    
+    <div class="game-over" id="game-over">
+      <h2 class="game-over-title">TEMPÊTE APAISÉE</h2>
+      <div class="final-score" id="final-score">0</div>
+      <p class="game-over-message" id="game-over-message">Vous avez exploré la nature cyclique de la colère, cette émotion puissante qui peut soit nous consumer, soit nous transformer.</p>
+      
+      <div class="button-container">
+        <button class="replay-btn" id="replay-btn">RECOMMENCER</button>
+        <button class="menu-return-btn" id="menu-return-btn">MENU PRINCIPAL</button>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+<script src="js/colere.js"></script>
+</html>
